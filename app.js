@@ -6,8 +6,8 @@ let connection;
 function readEmail() {
     const config = {
         imap: {
-            user: 'myday.sap@gmail.com',
-            password: 'myday@sap',
+            user: process.env.MYDAY_USER_NAME,
+            password: process.env.MYDAY_PASS,
             host: 'imap.gmail.com',
             port: 993,
             tls: true,
@@ -31,8 +31,7 @@ function readEmail() {
         })
         .then((results) => {
             console.log(results);
-        })
-
+        });
 
 }
 
