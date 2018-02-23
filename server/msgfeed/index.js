@@ -11,10 +11,7 @@ const channels = [emailChannel];
 
 let syndicate = function(user, since) {
     emailChannel.fetchSummaries(user, since)
-        .then(function(summaries) {
-            saveSummaries(user, summaries);
-        });
-
+        .then(summaries => saveSummaries(user, summaries));
 }
 
 
@@ -37,7 +34,7 @@ let saveSummary = function(user, summary) {
                 'snippet': summary.metadata.snippet
             }
         });
-    ms.save(function(err){
+    ms.save(err => {
         if (err) throw err;
         console.log('summary created');
     });
