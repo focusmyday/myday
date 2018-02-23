@@ -1,9 +1,11 @@
 'use strict';
 
-let fetchSummaries  = function() {
+let fetchSummaries  = function(user, since) {
     //mock for now
     let summaries = [];
-    let summary = {'channelType' : 'email', 
+    let summary = {
+        'user': user,
+        'channelType' : 'email',
         'channelName': 'My Gmail', 
         'msgTimeStamp': new Date(),
         'metadata' : {

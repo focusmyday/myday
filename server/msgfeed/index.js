@@ -9,31 +9,25 @@ const emailChannel = require('../emailParser/index.js');
 const channels = [emailChannel];
 
 
-let syndicate = function() {
-    // channels.forEach(function(channel) {
-    //     channel.fetchSummaries()
-    //         .then(function(summaries) {
-    //             saveSummaries(summaries);
-    //         });
-    //    
-    // });
-    emailChannel.fetchSummaries()
+let syndicate = function(user, since) {
+    emailChannel.fetchSummaries(user, since)
         .then(function(summaries) {
-            saveSummaries(summaries);
+            saveSummaries(user, summaries);
         });
 
 }
 
 
-let saveSummaries = function(summaries) {
+let saveSummaries = function(user, summaries) {
     summaries.forEach(function(summary) {
-        saveSummary(summary)
+        saveSummary(user, summary)
     });
 }
 
 
-let saveSummary = function(summary) {
+let saveSummary = function(user, summary) {
     const ms = MsgSummaryModel({
+        'user': user,
         'channelType' : summary.channelType,
             'channelName': summary.channelName,
             'msgTimeStamp': summary.msgTimeStamp,
@@ -50,6 +44,6 @@ let saveSummary = function(summary) {
 }
 
 
-
-syndicate();
+const now = new Date();
+syndicate('userx', new Date(now - 5*60*60));
 
