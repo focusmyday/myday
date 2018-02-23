@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "express": "4.16.2",
-    "promise": "8.0.1",
-    "imap-simple": "4.0.0"
+    "imap-simple": "4.0.0",
+    "mongoose": "^4.13.6",
+    "promise": "8.0.1"
   },
   "main": "app.js",
   "devDependencies": {},
