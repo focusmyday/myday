@@ -4,7 +4,8 @@
   "dependencies": {
     "express": "4.16.2",
     "promise": "8.0.1",
-    "imap-simple": "4.0.0"
+    "imap-simple": "4.0.0",
+    "node-registry": "^0.5.0"
   },
   "main": "app.js",
   "devDependencies": {},
