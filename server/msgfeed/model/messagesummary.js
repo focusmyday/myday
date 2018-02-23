@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 //Create the message summary schema
 
 const msgSummarySchema = new Schema({
+     user : String,
      channelType : String,
      channelName : String,
      msgTimeStamp: Date,
