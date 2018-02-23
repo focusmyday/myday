@@ -1,43 +1,16 @@
 'use strict';
 
-const imaps = require('imap-simple');
-let connection;
+const express = require('express');
+const Registry = require('node-registry');
 
-function readEmail() {
-    const config = {
-        imap: {
-            user: process.env.MYDAY_USER_NAME,
-            password: process.env.MYDAY_PASS,
-            host: 'imap.gmail.com',
-            port: 993,
-            tls: true,
-            authTimeout: 3000
-        }
-    };
+// Scans your `server` directory to autmatically register modules inside the IoC Container
+Registry.registerFolder(__dirname + '/server');
 
-    return imaps.connect(config)
-        .then((connected) => {
-            console.log('connection success!!!');
-            connection = connected;
-            return connection.openBox('INBOX');
-        })
-        .then(() => {
-            const searchCriteria = ['UNSEEN'];
-            const fetchOptions = {
-                bodies: ['HEADER', 'TEXT'],
-                markSeen: false
-            };
-            return connection.search(searchCriteria, fetchOptions);
-        })
-        .then((results) => {
-            console.log(results);
-        });
+const app = express();
 
-}
-
-try {
-    return readEmail();
-}
-catch (e) {
-    console.log(e);
-}
+// register the Express HTTP Listener with the default port of 8000
+const Server = Registry.createServer(app);
+// Start the server
+Server.start(function() {
+    console.info('Server running on Port: %d', Server.port);
+});
