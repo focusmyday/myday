@@ -2,9 +2,10 @@
   "name": "myday",
   "version": "1.0.0",
   "dependencies": {
+    "@octokit/rest": "^14.0.9",
     "express": "4.16.2",
-    "promise": "8.0.1",
-    "imap-simple": "4.0.0"
+    "imap-simple": "4.0.0",
+    "promise": "8.0.1"
   },
   "main": "app.js",
   "devDependencies": {},
