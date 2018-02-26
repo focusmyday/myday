@@ -19,10 +19,11 @@ const msgSummarySchema = new Schema({
           target: String,
           msgType: String,
           snippet: String
-     }
+     },
+    body: String,
+    title: String,
+    url: String
 });
 
-
 const MessageSummary = mongoose.model('MessageSummary', msgSummarySchema);
-
 module.exports = MessageSummary;
