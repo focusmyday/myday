@@ -10,5 +10,4 @@ const Server = registry.createServer(app);
 
 Server.start(function () {
     console.info('Server running on Port: %d', Server.port);
-
 });
