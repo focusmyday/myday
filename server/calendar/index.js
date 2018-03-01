@@ -108,6 +108,7 @@ function listEvents(auth) {
         calendarId: 'primary',
         maxResults: 10,
         singleEvents: true,
+        timeMin: (new Date()).toISOString(),
         orderBy: 'startTime'
     }, function(err, response) {
         if (err) {
@@ -122,7 +123,8 @@ function listEvents(auth) {
             for (let i = 0; i < events.length; i++) {
                 let event = events[i];
                 let start = event.start.dateTime || event.start.date;
-                console.log('%s - %s', start, event.summary);
+                let end = event.end.dateTime || event.end.date;
+                console.log('START: %s - END: %s || Summary: %s ', start, end, event.summary);
             }
         }
     });
