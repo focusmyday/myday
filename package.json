@@ -2,6 +2,7 @@
   "name": "myday",
   "version": "1.0.0",
   "dependencies": {
+    "@octokit/rest": "^14.0.9",
     "express": "4.16.2",
     "imap-simple": "4.0.0",
     "mongoose": "^4.13.6",
