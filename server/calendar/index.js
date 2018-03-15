@@ -87,7 +87,7 @@ function storeToken(token) {
     try {
         fs.mkdirSync(TOKEN_DIR);
     } catch (err) {
-        if (err.code != 'EEXIST') {
+        if (err.code !== 'EEXIST') {
             throw err;
         }
     }
@@ -116,7 +116,7 @@ function listEvents(auth) {
             return;
         }
         const events = response.data.items;
-        if (events.length == 0) {
+        if (events.length < 1) {
             console.log('No upcoming events found.');
         } else {
             console.log('Upcoming 10 events:');
