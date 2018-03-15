@@ -5,6 +5,7 @@ const registry = require('node-registry');
 
 
 const app = express();
+app.use(express.static('public'));
 
 const Server = registry.createServer(app);
 
