@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<html lang="en">
+<html lang="en" ng-app="myDay" ng-controller="MyDayController">
 <head>
     <meta charset="UTF-8">
     <title>My Day</title>
@@ -8,17 +8,22 @@
             rel="stylesheet"
             href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="index.js"></script>
 </head>
 <body class="mdc-typography" style="margin: auto; width: 90%">
 
+<calendar-md></calendar-md>
+
 <ul class="mdc-list">
     <h1 class="mdc-typography--display1">Tasks</h1>
-    <li class="mdc-list-item" style="height: auto; padding-top: 10px">
+    <li ng-repeat="task in taskList" class="mdc-list-item" style="height: auto; padding-top: 10px">
     <span style="width: 95%">
         <div class="mdc-list-item__text" style="display: flex; justify-content: space-between;">
-            <div>Write the UI</div>
+            <div>{{task.title}}</div>
             <div class="mdc-checkbox">
               <input type="checkbox"
+                     ng-model="task.completed"
                      class="mdc-checkbox__native-control"/>
               <div class="mdc-checkbox__background">
                 <svg class="mdc-checkbox__checkmark"
@@ -33,32 +38,7 @@
             </div>
         </div>
       <span class="mdc-list-item__secondary-text">
-        next week from gmail
-      </span>
-    </span>
-    </li>
-
-    <li class="mdc-list-item" style="height: auto; padding-top: 10px">
-    <span style="width: 95%">
-        <div class="mdc-list-item__text" style="display: flex; justify-content: space-between;">
-            <div>Fix up the back end</div>
-            <div class="mdc-checkbox">
-              <input type="checkbox"
-                     class="mdc-checkbox__native-control"/>
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark"
-                     viewBox="0 0 24 24">
-                  <path class="mdc-checkbox__checkmark-path"
-                        fill="none"
-                        stroke="white"
-                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
-              </div>
-            </div>
-        </div>
-      <span class="mdc-list-item__secondary-text">
-        tomorrow from github
+        {{task.context}}
       </span>
     </span>
     </li>
@@ -66,10 +46,10 @@
 
 <ul class="mdc-list">
     <h1 class="mdc-typography--display1">Inbox</h1>
-    <li class="mdc-list-item" style="height: auto; padding-top: 10px">
+    <li ng-repeat="entry in inbox" class="mdc-list-item" style="height: auto; padding-top: 10px">
     <span style="width: 95%">
         <div class="mdc-list-item__text" style="display: flex; justify-content: space-between;">
-            <div>make an account to meet cuties</div>
+            <div>{{entry.title}}</div>
             <div>
                 <button class="mdc-button">
                     start
@@ -80,25 +60,7 @@
             </div>
         </div>
       <span class="mdc-list-item__secondary-text">
-          yesterday from sms
-      </span>
-    </span>
-    </li>
-    <li class="mdc-list-item" style="height: auto; padding-top: 10px">
-    <span style="width: 95%">
-        <div class="mdc-list-item__text" style="display: flex; justify-content: space-between;">
-            <div>take a good pic with the shark</div>
-            <div>
-                <button class="mdc-button">
-                    start
-                </button>
-                <button class="mdc-button">
-                    <i class="material-icons mdc-button__icon">delete</i>
-                </button>
-            </div>
-        </div>
-      <span class="mdc-list-item__secondary-text">
-          last week from gmail
+          {{entry.context}}
       </span>
     </span>
     </li>
